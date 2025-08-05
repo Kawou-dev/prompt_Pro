@@ -10,7 +10,7 @@ export async function  syncUser(user : any){
         const newUser = await UserModel.create({user}) ; 
         return NextResponse.json({message: "User creé avec succès", newUser} , {status : 201})
     } catch (error) {
-        console.error("Erreur lors de la creation du user" , error) ; 
+        console.error("Erreur lors de la creation du user  ---> action " , error) ; 
         return NextResponse.json({message : "Erreur lors de la creation du user"} , {status : 500}) ; 
     }
 }
