@@ -6,6 +6,11 @@ import UserModel from "../models/user.Model";
 export async function syncUser(user: any) {
   try {
     await connectDB();
+    const existingUser = await UserModel.findOne({ clerkId: user.clerkId });
+    if (existingUser) {
+      console.log("User déjà existant :", existingUser.email);
+      return; // Stoppe ici
+    }
     const newUser = await UserModel.create(user);
     console.log("User créé:", newUser);
     return newUser;
