@@ -1,3 +1,4 @@
+"use server"
 import { NextResponse } from "next/server";
 import { connectDB } from "../config/mongoDB";
 import UserModel from "../models/user.Model";

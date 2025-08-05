@@ -34,6 +34,8 @@ export async function POST(req: NextRequest) {
             if(!newUser) return ; 
 
             await syncUser(newUser) ; 
+
+            
  
         } catch (error) {
             console.log("Erreur lors de la création api endpoint" , error) ; 
