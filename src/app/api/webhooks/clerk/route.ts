@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
-import { syncUser } from '@/app/lib/actions/user.action';
+// import { syncUser } from '@/app/lib/actions/user.action';
 import { verifyWebhook } from '@clerk/nextjs/webhooks'
 import { NextRequest } from 'next/server'
+import UserModel from '@/app/lib/models/user.Model';
 
 export async function POST(req: NextRequest) {
   try {
@@ -33,12 +34,20 @@ export async function POST(req: NextRequest) {
             console.log(newUser)  ; 
             if(!newUser) return ; 
 
-            await syncUser(newUser) ; 
+            // await syncUser(newUser) ; 
+
+
+            await UserModel.create({newUser}) ; 
+
+            return NextResponse.json({message : "Bingo "} , {status: 201})
+
+            
 
             
  
         } catch (error) {
             console.log("Erreur lors de la création api endpoint" , error) ; 
+            return NextResponse.json({message : "Erreur "} , {status : 500}) ; 
         }
 
 
