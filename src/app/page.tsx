@@ -1,12 +1,20 @@
-import React from 'react'
-import { connectDB } from './lib/config/mongoDB'
+import Footer from '@/components/Footer';
+import Hero from '@/components/Hero';
+import Navbar from '@/components/Navbar';
 
 const Home = () => {
-
-  connectDB() ; 
+ 
 
   return (
-    <div>Hello Kawou</div>
+     <>
+        <Navbar />
+
+        <Hero />
+
+        <Footer />
+
+      
+     </>
   )
 }
 

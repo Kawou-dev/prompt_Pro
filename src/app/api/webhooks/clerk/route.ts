@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { syncUser } from '@/app/lib/actions/user.action';
 import { verifyWebhook } from '@clerk/nextjs/webhooks';
 import { NextRequest } from 'next/server';
+import UserModel from '@/app/lib/models/user.Model';
 
 export async function POST(req: NextRequest) {
   try {
@@ -23,6 +24,9 @@ export async function POST(req: NextRequest) {
         email,
         image: image_url,
       };
+
+      const existingUser = await UserModel.findOne({email: email}) ; 
+      if(existingUser) return ; 
 
      const myUser =  await syncUser(newUser);
 

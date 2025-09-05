@@ -1,10 +1,19 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import React from 'react'
+import { ThemeProvider } from "@/components/theme-provider"
 
 const ClerkNextProvider = ({children}: {children  : React.ReactNode}) => {
   return (
+
      <ClerkProvider>
-        {children}
+       <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
      </ClerkProvider>
   )
 }
