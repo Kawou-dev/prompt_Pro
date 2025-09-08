@@ -1,50 +1,54 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 
-// Matcher pour les routes protégées
+// Routes protégées
 const isProtectedRoute = createRouteMatcher([
   '/profile',
   '/chat',
   '/prompts',
   '/inbox',
-  '/events'
+  '/events',
+  '/dashboard',
 ])
-
-// Matcher pour la route admin
-const isAdminRoute = createRouteMatcher(['/dashboard'])
 
 export default clerkMiddleware(async (auth, req) => {
   const { sessionClaims } = await auth()
+  const role = sessionClaims?.metadata?.role
+  const url = new URL(req.url)
 
-  // 1️⃣ Protection des routes standards
+  // 1️⃣ Protection des routes
   if (isProtectedRoute(req)) {
     await auth.protect()
   }
 
-  // 2️⃣ Gestion de la route admin
-  if (isAdminRoute(req)) {
-    if (sessionClaims?.metadata?.role !== 'kawou_promptpro') {
-      // Non admin → on redirige vers /chat
-      const url = new URL('/chat', req.url)
-      return NextResponse.redirect(url)
-    }
-  }else{
-   if (isAdminRoute(req)) {
-    if (sessionClaims?.metadata?.role === 'kawou_promptpro') {
-     
-      const url = new URL('/dashboard', req.url)
-      return NextResponse.redirect(url)
+  // 2️⃣ Après sign-in ou sign-up → Clerk envoie vers "/"
+  // On redirige dynamiquement selon le rôle
+  if (url.pathname === '/' && req.headers.get("referer")?.includes("/sign-in")) {
+    if (role === 'kawou_promptpro') {
+      return NextResponse.redirect(new URL('/dashboard', req.url))
+    } else {
+      return NextResponse.redirect(new URL('/chat', req.url))
     }
   }
 
-}
+  if (url.pathname === '/' && req.headers.get("referer")?.includes("/sign-up")) {
+    if (role === 'kawou_promptpro') {
+      return NextResponse.redirect(new URL('/dashboard', req.url))
+    } else {
+      return NextResponse.redirect(new URL('/chat', req.url))
+    }
+  }
 
+  // 3️⃣ Empêcher un non-admin d’accéder au dashboard
+  if (url.pathname.startsWith('/dashboard') && role !== 'kawou_promptpro') {
+    return NextResponse.redirect(new URL('/chat', req.url))
+  }
 
+  return NextResponse.next()
 })
 
 export const config = {
   matcher: [
-    // On exclut les fichiers statiques
     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
     '/(api|trpc)(.*)',
   ],
