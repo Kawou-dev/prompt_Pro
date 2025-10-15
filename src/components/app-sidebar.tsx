@@ -1,4 +1,5 @@
-import { Calendar, ChevronUp, Home, Inbox, Pencil, Search, Settings, User, User2 } from "lucide-react"
+"use client"
+import { Calendar, ChevronUp, Home, Inbox, Pencil, Search, Settings, User, User2 , MessageSquareMore , Star, MessageCirclePlus , SquarePen} from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -13,46 +14,22 @@ import {
   
 } from "@/components/ui/sidebar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
-import { SignOutButton, useUser } from "@clerk/nextjs"
+import { SignedOut, SignOutButton, useUser } from "@clerk/nextjs"
 import Link from "next/link"
+import { usePopup } from "@/context/PopupContext"
+import { items } from "@/app/lib/data/data"
 
 // Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "chat",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "/inbox",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "/events",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-   {
-    title: "Mes Prompts",
-    url: "prompts",
-    icon: Pencil,
-  },
-  {
-    title: "Settings",
-    url: "setting",
-    icon: Settings,
-  },
-]
+
 
 export function AppSidebar() {
 
+  
+   
+  const {openPopup } = usePopup() ; 
 
+  const { user} = useUser() ; 
+  if(!user) return ; 
 
 
 
@@ -70,15 +47,11 @@ export function AppSidebar() {
 
                    <hr className="h-0.5 w-full border  text-black bg-black " />
                </div>
-              
-
-             
-             
             </SidebarGroupLabel>
-            <SidebarGroupContent className="mt-20">
+            <SidebarGroupContent className="mt-20  ">
               <SidebarMenu>
                 {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
+                  <SidebarMenuItem key={item.title}  >
                     <SidebarMenuButton asChild >
                       {/* <a href={item.url}>
                         <item.icon />
@@ -89,6 +62,9 @@ export function AppSidebar() {
                         <item.icon />
                         <span>{item.title}</span>
                       </Link>
+                       
+                      
+
 
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -98,19 +74,25 @@ export function AppSidebar() {
           </SidebarGroup>
         </SidebarContent>
 
-                {/*  */}
+                {/* border-2  border-red-500  */}
 
-                <SidebarFooter className="mb-4">
+                 {/* className="border-2  border-red-500 p-3 */}
+
+                <SidebarFooter >
           <SidebarMenu>
-            <SidebarMenuItem>
+            <SidebarMenuItem >
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton>
-      
-                    <User2 /> Kawou
+                  <SidebarMenuButton >
                   
-      
+                  <div className="p-3 flex items-center gap-3 rounded-full  ">
+                    <img  src={user.imageUrl} alt={user.fullName || "Profile"}
+                      className=" object-cover     w-[36px] h-[30px] cursor-pointer rounded-full  "
+                       />
+                      <span className="ml-2">{user.firstName}</span>
+                    </div>
                     <ChevronUp className="ml-auto" />
+                 
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
@@ -124,7 +106,10 @@ export function AppSidebar() {
                     <span>Billing</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <span> <SignOutButton /> </span>
+                    {/* sign out button */}
+                    <span className="text-red-500"> <SignOutButton /> </span>
+                 
+                 
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -139,3 +124,18 @@ export function AppSidebar() {
 {/* <SidebarMenuButton asChild isActive>
   <a href="#">Home</a>
 </SidebarMenuButton> */}
+
+
+
+
+                // <div className="flex justify-end mb-5  relative ">
+                //   <div className="flex justify-cente mr-3 h-full w-full    ">
+                     
+                // <img 
+                //     src={user.imageUrl}
+                //     alt={user.fullName || "Profile"}
+                //     className=" object-cover     w-[56px] h-[36px] cursor-pointer rounded-full  "
+                // />
+                //   </div>
+                // </div>
+      

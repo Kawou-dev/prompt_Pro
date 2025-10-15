@@ -15,7 +15,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Prompt AI Pro",
-  description: "Generateur de texte  | Prompt    ",
+  description: "Generateur de texte  | Prompt ",
+  icons: {
+    icon: "/favicon.ico.jpg",
+  }
 };
 
 export default function RootLayout({
@@ -25,6 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en"  className="scroll-smooth"  suppressHydrationWarning>
+      
+      {/* <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+       <link rel="icon" href="/favicon.ico.jpg" type="image/jpg" />
+      </head> */}
+     
+     
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
       >

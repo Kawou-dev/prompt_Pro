@@ -3,10 +3,11 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import {
 
   SidebarMenuButton,
-
-  
 } from "@/components/ui/sidebar"
 import { SignOutButton } from "@clerk/nextjs"
+
+
+
 const Chat = () => {
 
   const options = [
@@ -15,6 +16,10 @@ const Chat = () => {
       { label: "Invitation" , value: ""} , 
       { label: "Annonce" , value: ""} , 
   ]
+
+
+
+
 
   return (
      <>

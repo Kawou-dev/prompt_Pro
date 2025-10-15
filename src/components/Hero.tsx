@@ -1,9 +1,29 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import AddsCarousel from './CarouselAdd';
+
+
+
+const adds = [
+  {
+    title : " # Prompt: Assistant marketing" , 
+    description : "Créez un post engageant pour les réseaux sociaux qui présente notre nouveau produit [nom du produit] en mettant en avant ses [caractéristiques principales] et en ciblant [audience cible]" , 
+  },
+  {
+    title : " # Prompt: Assistant lettre de motivation" , 
+    description : "Rédigez une lettre de motivation convaincante pour le poste de [nom du poste] en mettant en avant vos [compétences clés] et votre [expérience pertinente] afin de capter l'attention du recruteur." , 
+  },
+  {
+    title : " # Prompt: Assistant création de contenu" , 
+    description : "Générez un article de blog captivant sur [sujet] en mettant en avant [points clés] et en adoptant un ton [ton souhaité]." , 
+  }
+]
+
+
 
 const Hero = () => {
   return (
-    <section className="relative bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-16 md:py-24 lg:py-32">
+    <section className="relative bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-16 md:py-20 lg:py-28">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           {/* Content */}
@@ -28,18 +48,18 @@ const Hero = () => {
                 href="/create" 
                 className="px-8 py-3 border-2 border-purple-500 text-purple-500 dark:text-purple-400 dark:border-purple-400 font-medium rounded-lg hover:bg-purple-50 dark:hover:bg-gray-800 transition-all duration-300 text-center"
               >
-                Créer un prompt
+                Partager un prompt
               </Link>
             </div>
             
             <div className="flex items-center justify-center lg:justify-start gap-6 text-gray-500 dark:text-gray-400">
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">10K+</div>
+                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">5K+</div>
                 <div className="text-sm">Prompts disponibles</div>
               </div>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">5K+</div>
+                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">2K+</div>
                 <div className="text-sm">Utilisateurs actifs</div>
               </div>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
@@ -62,10 +82,27 @@ const Hero = () => {
                       <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                       <div className="w-3 h-3 rounded-full bg-green-400"></div>
                     </div>
+                    
+                    
+                     {/* {adds.map((add, index) => (
+                      <div key={index} className="bg-gray-900 rounded-lg p-4 font-mono text-sm text-green-300 mb-4">
+                        <p className="mb-2">{add.title}</p>
+                        <p>{add.description}</p>
+                      </div>
+                     ))} */}
+
+                     <AddsCarousel />
+                   
+              {/*                    
                     <div className="bg-gray-900 rounded-lg p-4 font-mono text-sm text-green-300">
                       <p className="mb-2"># Prompt: Assistant marketing</p>
                       <p>Créez un post engageant pour les réseaux sociaux qui présente notre nouveau produit [nom du produit] en mettant en avant ses [caractéristiques principales] et en ciblant [audience cible].</p>
-                    </div>
+                    </div> 
+              */}
+
+
+
+
                   </div>
                 </div>
               </div>

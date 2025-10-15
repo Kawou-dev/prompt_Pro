@@ -46,7 +46,7 @@ const SidebarLeft = () => {
               {/* <MessageCirclePlus /> 
               <Search  onClick={openPopup}/>
               <Home /> */}
-              <ul className="flex flex-col gap-3">
+              {/* <ul className="flex flex-col gap-3">
                 {leftIcons.map((icon) => (
                    <li key={icon.title} title={icon.title}  onClick={icon.onclick}
                    className="cursor-pointer">
@@ -58,13 +58,14 @@ const SidebarLeft = () => {
                    
                    </li> 
                 ))}
-                </ul>
+              </ul> */}
 
 
              </div>
            
               <div className="flex justify-end mb-5  relative ">
                   <div className="flex justify-cente mr-3 h-full w-full    ">
+                     
                       <img 
                     src={user.imageUrl}
                     alt={user.fullName || "Profile"}
