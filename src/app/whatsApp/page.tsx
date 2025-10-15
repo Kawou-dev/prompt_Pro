@@ -1,10 +1,10 @@
 import React from 'react'
-import { getPrompt } from '../lib/actions/getPrompts'
+// import { getPrompts } from '../lib/actions/getPrompts';
 
 const page =async() => {
 
-  const prompts = await getPrompt() ; 
-  console.log("Les prompts",  prompts) ; 
+  // const prompts = await getPrompts() ; 
+  // console.log("Les prompts",  prompts) ; 
 
   return (
     <div>

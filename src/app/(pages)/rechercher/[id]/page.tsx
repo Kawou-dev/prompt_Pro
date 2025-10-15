@@ -13,13 +13,17 @@ type Prompt = {
 };
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-const ResultDetailPage = async ({ params }: Props) => {
+export default async function ResultDetailPage({ params }: Props) {
+  // Await the params to get the actual values
+  const { id } = await params;
+  console.log("ID reçu dans le composant", id);
+  
   await connectDB();
 
-  const prompt = (await PromptModel.findById(params.id).lean()) as Prompt | null;
+  const prompt = (await PromptModel.findById(id).lean()) as Prompt | null;
 
   if (!prompt) {
     return (
@@ -42,6 +46,4 @@ const ResultDetailPage = async ({ params }: Props) => {
       </div>
     </div>
   );
-};
-
-export default ResultDetailPage;
+}
