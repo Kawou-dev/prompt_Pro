@@ -100,7 +100,7 @@ const Prompts = async({searchParams,}: { searchParams: { category?: string }}) =
                  </div>
         </section>
     
-    
+  
       </main>
   )
 }

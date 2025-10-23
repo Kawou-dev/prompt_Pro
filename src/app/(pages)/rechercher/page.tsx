@@ -30,14 +30,14 @@ const SearchPage = () => {
 
   return (
     <div className="h-screen w-full p-4">
-      <form className="w-full mt-3 md:hidden" onSubmit={(e) => e.preventDefault()}>
+      <form className="w-full mt-3 " onSubmit={(e) => e.preventDefault()}>
         <div className="relative shadow-sm">
           <input
             type="text"
             placeholder="Search..."
             value={query}
             onChange={handleSearch}
-            className="pl-4 p-2 border-x-0 border-b-2 w-full text-black text-xl"
+            className="pl-4 p-2  border-4 border-t-blue-600   border-x-0 border-b-2 w-full text-black text-xl"
           />
           {query && (
             <button

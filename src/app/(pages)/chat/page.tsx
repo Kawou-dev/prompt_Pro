@@ -1,4 +1,4 @@
-import  {Share , EllipsisVertical, ChevronUp, User2}  from "lucide-react"
+import  {Share , EllipsisVertical, ChevronUp, User2, HandHelping}  from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../../components/ui/dropdown-menu"
 import {
 
@@ -29,12 +29,14 @@ const Chat = () => {
            <section className="flex justify-center w-full h-screen  md:pt-20 pt-16 ">
 
                 <div className="flex flex-col gap-4 items-center ">
-                      <h1 className="text-center text-2xl font-semibold">Qu&apos;avez-vous en tête ?</h1>
+                      <h1 className="flex gap-2 items-center text-center text-2xl font-semibold">
+                        <p>Personnalisez votre texte </p> 
+                         <span> <HandHelping /> </span> </h1>
                     
                     <form >
 
                       <textarea className=" md:w-[750px] w-[300px]  md:h-32 rounded-2xl border-2 p-3 text-md shadow "
-                      placeholder="Entrer votre ..."
+                      placeholder="Entrer votre texte ..."
                       ></textarea>
 
 
@@ -42,7 +44,7 @@ const Chat = () => {
 
 
                         {/* option div */}
-                    <div className="flex justify-center gap-4 px-1 relative  flex-wrap md:w-[550px] w-[400px]  ">
+                    {/* <div className="flex justify-center gap-4 px-1 relative  flex-wrap md:w-[550px] w-[400px]  ">
                        
                         <ul className="flex justify-center md:px-1 px-4 gap-2 items-center flex-wrap   md:w-[500px] w-[350px]  ">
                           {options.map((option) => (
@@ -51,7 +53,7 @@ const Chat = () => {
                             </li>
                           ))}
                         </ul>
-                    </div>
+                    </div> */}
 
                 </div>
 

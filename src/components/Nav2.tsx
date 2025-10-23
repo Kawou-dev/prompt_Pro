@@ -24,13 +24,21 @@ const Nav2 = () => {
         </h1>
       </div>
 
-      <div className="flex items-center gap-2">
+      {/* <div className="flex items-center gap-2">
             <p className="cursor-pointer">Se connecter</p>
             <div className="flex items-center gap-4">
               <Share className="text-sm" />
-              {/* <span>Partager</span> */}
+             
+           </div>
       </div>
-      </div>
+     */}
+
+     <div>
+        <p>Filter </p>
+     </div>
+    
+    
+    
     </header>
     
   )
