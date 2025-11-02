@@ -1,3 +1,29 @@
+// "use server"
+// import { connectDB } from "../config/mongoDB"
+// import PromptModel from "../models/prompt.Model"
+
+// export const getPrompts = async (category: string, query?: string) => {
+//   try {
+//     await connectDB()
+
+//     const filter: any = category === "all" ? {} : { category }
+
+//     if (query && query.trim() !== "") {
+//       filter.$or = [
+//         { title: { $regex: query, $options: "i" } },
+//         { description: { $regex: query, $options: "i" } },
+//       ]
+//     }
+
+//     const prompts = await PromptModel.find(filter).sort({ createdAt: -1 }).lean()
+//     return JSON.parse(JSON.stringify(prompts))
+//   } catch (error) {
+//     throw new Error("Erreur lors de la récupération des prompts")
+//   }
+// }
+
+
+
 // action getPrompts.ts
 "use server";
 import { connectDB } from "../config/mongoDB";

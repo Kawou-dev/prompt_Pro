@@ -1,4 +1,4 @@
-import { Calendar, ChevronUp, Home, Inbox, Pencil, Search, Settings, User, User2 , MessageSquareMore , Star, MessageCirclePlus , SquarePen} from "lucide-react"
+import { Calendar, ChevronUp, Home, Inbox, Pencil, Search, Settings, User, User2 , MessageSquareMore , Star, MessageCirclePlus , SquarePen, HeartPlus} from "lucide-react"
 
 export const items = [
   {
@@ -10,7 +10,7 @@ export const items = [
     {
     title: "Favoris",
     url: "/favories",
-    icon: Star,
+    icon: HeartPlus,
   },
    {
     title: "Chat",
@@ -44,20 +44,26 @@ export const elements = [
      label: "Tous" , category : "all" , href: "all"
   }, 
   {
-     label: "Anniversaire" , category : "anniversaire" , href: "anniversaire"
+     label: "Sujets D'actualités" , category : "actualités" , href: "actualités"
   }, 
+  // {
+  //    label: "Anniversaire" , category : "anniversaire" , href: "anniversaire"
+  // }, 
   
-  {
-     label: "Annonce" , category : "annonce"  ,  href : "annonce" , 
-  }, 
+  // {
+  //    label: "Citation" , category : "citation"  ,  href : "citation" , 
+  // }, 
 
   {
-     label: "Invitation" , category : "invitation" , href : "invitation" , 
+     label: "Developpement Personnel" , category : "developpement_personnel" , href : "developpement_personnel" , 
+  },
+  {
+     label: "Citation" , category : "citation" , href : "citation" , 
   },
    {
-     label: "Motivation" , category : "motivation" , href : "motivation" , 
+     label: "Spiritualité" , category : "spiritualité" , href : "spiritualité" , 
   },
-    {
-     label: "Campus France" , category : "Campus" , href : "Campus" , 
+  {
+     label: "Campus France" , category : "campus_france" , href : "Campus" , 
   },
 ]

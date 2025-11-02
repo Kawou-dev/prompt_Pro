@@ -29,7 +29,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="h-screen w-full p-4">
+    <div className="h-screen w-full p-4 mt-12">
       <form className="w-full mt-3 " onSubmit={(e) => e.preventDefault()}>
         <div className="relative shadow-sm">
           <input

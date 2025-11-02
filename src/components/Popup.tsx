@@ -6,26 +6,24 @@ import {SquareX , X , Search}  from "lucide-react"
 
 const themes = [
   {
-    label : "Anniversaire" , value: "anniversaire"
+    label : "Actualités" , value: "actualites"
   }, 
     {
-    label : "Annonce" , value: "anniversair"
+    label : "Annonce" , value: "annonce"
   }, 
     {
-    label : "Invitation" , value: "annrsaire"
+    label : "Invitation" , value: "invitation"
   }, 
-    {
-    label : "Anniversaire" , value: "anniveaire"
-  }, 
-  {
-    label : "Anniversaire" , value: "anrsaire"
+   {
+    label : "Developpement personnel" , value: "developpement_personnel"
   }, 
   {
-    label : "Anniversaire" , value: "anrsare"
+    label : "Humour" , value: "humour"
   }, 
   {
-    label : "Anniversaire" , value: "anrsaie"
+    label : "Campus France" , value: "campus_france"
   }, 
+
 
 
 
@@ -66,14 +64,14 @@ const Popup = () => {
                                 <div className='mt-2 ml-1 mb-2 '>
                                      
                                      <div className='mb-1 pl-2'>
-                                        <p>Ensemble de volet</p>
+                                        {/* <p>Ensemble de volet</p> */}
                                      </div>
 
                                     <div className='flex flex-col gap-1 px-1 mb-2'>
 
                                       {themes.map( (item) => (
                                         <div key={item.value} className='w-full border-2 py-2 px-2 rounded   ' >
-                                           <p>Anniversaire</p>
+                                           <p>{item.label}</p>
                                         </div>
                                      
                                      ) )}

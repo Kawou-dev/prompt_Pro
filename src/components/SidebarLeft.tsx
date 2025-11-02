@@ -40,7 +40,7 @@ const SidebarLeft = () => {
 
 
   return (
-     <div className="mt-20 fixed flex flex-col justify-between h-full mr-10  " >
+     <div className="mt-20 fixed flex flex-col justify-between h-full mr-10    " >
               
              <div className="flex flex-col gap-3 mt-4">
               {/* <MessageCirclePlus /> 

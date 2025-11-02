@@ -1,5 +1,3 @@
-
-import Footer from "@/components/Footer"
 import Nav2 from "@/components/Nav2"
 import Prompts from "@/components/Prompts"
 

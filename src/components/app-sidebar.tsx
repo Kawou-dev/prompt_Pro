@@ -10,7 +10,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
-  SidebarFooter , 
+  SidebarFooter, 
+  useSidebar, 
   
 } from "@/components/ui/sidebar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
@@ -26,7 +27,9 @@ export function AppSidebar() {
 
   
    
-  const {openPopup } = usePopup() ; 
+  const {openPopup } = usePopup() ;
+  
+  const {toggleSidebar} = useSidebar()
 
   const { user} = useUser() ; 
   if(!user) return ; 
@@ -42,7 +45,7 @@ export function AppSidebar() {
                <div className="flex flex-col w-full gap-4">
                     <div className="flex items-center justify-between  w-full mt-5 ">
                       <span className="text-2xl pl-1 font-semibold">PromptPro</span>
-                      <SidebarTrigger className="text-6xl " />
+                      <SidebarTrigger className="text-6xl  " />
                    </div>
 
                    <hr className="h-0.5 w-full border  text-black bg-black " />
@@ -57,11 +60,14 @@ export function AppSidebar() {
                         <item.icon />
                         <span>{item.title}</span>
                       </a> */}
-
-                      <Link href={item.url}>
+                     
+                      <Link  href={item.url}
+                        onClick={toggleSidebar}>
                         <item.icon />
                         <span>{item.title}</span>
                       </Link>
+
+                 
                        
                       
 
@@ -121,21 +127,5 @@ export function AppSidebar() {
     </Sidebar>
   )
 }
-{/* <SidebarMenuButton asChild isActive>
-  <a href="#">Home</a>
-</SidebarMenuButton> */}
 
-
-
-
-                // <div className="flex justify-end mb-5  relative ">
-                //   <div className="flex justify-cente mr-3 h-full w-full    ">
-                     
-                // <img 
-                //     src={user.imageUrl}
-                //     alt={user.fullName || "Profile"}
-                //     className=" object-cover     w-[56px] h-[36px] cursor-pointer rounded-full  "
-                // />
-                //   </div>
-                // </div>
       

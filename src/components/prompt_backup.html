@@ -1,3 +1,4 @@
+<!-- 
 import { FaArrowLeft, FaArrowRight, FaRegClock, FaChartLine, FaRegStar, FaCog, FaBell, FaUser, FaSearch, FaFilter, FaCopy, FaHeart, FaRegHeart, FaInstagram, FaLinkedin, FaTwitter, FaBars, FaFacebook, FaWhatsapp } from "react-icons/fa"
 import Link from "next/link"
 import { getPrompts } from "@/app/lib/actions/getPrompts"
@@ -51,7 +52,7 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string }}) 
           
           {/* BARRE DE RECHERCHE PRINCIPALE RESPONSIVE */}
           {/* <div className="mb-6 sm:mb-8">
-           
+            <h1>Input Search</h1>
             <div className="relative max-w-2xl">
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input 
@@ -67,7 +68,7 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string }}) 
           </div> */}
 
        
-          {/* <SearchInput /> */}
+          <SearchInput />
 
 
            {/* STATISTIQUES RESPONSIVES */}
@@ -101,20 +102,17 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string }}) 
                       <h1 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{prompt.title}</h1>
                       <p className="text-gray-600 text-sm sm:text-base">{prompt.description}</p>
                     </div>
-                
-                    {/* <button className="p-2 text-gray-400 hover:text-red-500 transition-colors ml-2 sm:ml-4 flex-shrink-0">
+                    <button className="p-2 text-gray-400 hover:text-red-500 transition-colors ml-2 sm:ml-4 flex-shrink-0">
                       {prompt.isFavori ? (
                         <FaHeart className="text-red-500" size={18} />
                       ) : (
                         <FaRegHeart size={18} />
                       )}
                     </button>
-                 */}
-                
                   </div>
 
                   {/* Contenu du template */}
-                  <div className="mb-4 whitespace-pre-wrap     ">
+                  <div className="mb-4     ">
                     <LargeExpandableText 
                       prompt={prompt.content}
                       title={prompt.title}
@@ -371,4 +369,4 @@ export default Prompts
             <span className="text-xs">Profil</span>
           </button>
         </div>
-      </div> */} 
+      </div> */} -->

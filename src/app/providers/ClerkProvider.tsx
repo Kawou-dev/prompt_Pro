@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const ClerkNextProvider = ({children}: {children  : React.ReactNode}) => {
   return (
 
-     <ClerkProvider>
+     <ClerkProvider >
        <ThemeProvider
             attribute="class"
             defaultTheme="system"

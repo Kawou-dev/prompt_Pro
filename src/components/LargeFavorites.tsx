@@ -1,6 +1,6 @@
 "use client"
 import { useState, useRef, useEffect, startTransition } from 'react';
-import { ClipboardEdit, Copy, Star, Save, X, PhoneOutgoing } from "lucide-react";
+import { ClipboardEdit, Copy, Star, Save, X, PhoneOutgoing, Trash } from "lucide-react";
 import { toggleFavori } from '@/app/lib/actions/markeFavori';
 import { updatePrompt } from '@/app/lib/actions/updatePrompt';
 
@@ -96,8 +96,19 @@ const LargeFavorites = ({
 
         <div className="flex items-center gap-3">
           {/* ⭐ Favori */}
-          <button onClick={() => handleFavori(id)} title="Ajouter au Favori">
+          {/* <button onClick={() => handleFavori(id)} title="Ajouter au Favori">
             <Star
+              size={20}
+              className={`transition-colors duration-200 ${
+                favoriState
+                  ? 'fill-yellow-400 text-yellow-400 animate-pulse'
+                  : 'fill-none text-gray-500'
+              }`}
+            />
+          </button> */}
+
+             <button onClick={() => handleFavori(id)} title="Ajouter au Favori">
+            <Trash
               size={20}
               className={`transition-colors duration-200 ${
                 favoriState

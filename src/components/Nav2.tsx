@@ -1,8 +1,10 @@
 "use client"
-import  {Share , EllipsisVertical, ChevronUp, User2}  from "lucide-react"
+import  {Share , EllipsisVertical, ChevronUp, User2, ClosedCaption, Hamburger, PanelLeftClose, PanelLeftOpen, User2Icon, User}  from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../components/ui/dropdown-menu"
-import {SidebarMenuButton, useSidebar} from "@/components/ui/sidebar"
-import { SignOutButton } from "@clerk/nextjs"
+import {SidebarMenuButton, SidebarTrigger, useSidebar} from "@/components/ui/sidebar"
+import { SignOutButton, useUser } from "@clerk/nextjs"
+import { FaBars, FaBell, FaCog, FaUser } from "react-icons/fa"
+import { useState } from "react"
 
 
 
@@ -10,36 +12,113 @@ import { SignOutButton } from "@clerk/nextjs"
 
 const Nav2 = () => {
 
-    const { open } = useSidebar()  
+    const { open , setOpen } = useSidebar()  
+    const [showAccountMenu, setShowAccountMenu] = useState(false) ;
+
+
+    const { user} = useUser() ; 
+    if(!user) return ; 
 
   return (
 
-    <header
-      className={`fixed top-0 right-0 h-12 flex items-center justify-between px-6 shadow-sm bg-white z-50 transition-all
-      ${open ? "md:left-64 left-12" : "left-12"}`}
-    >
-      <div>
-        <h1 className={`text-xl font-bold   ${open ? "md:hidden" : ""}  `}>
-           <span className="text-2xl pl-1 font-semibold">PromptPro</span>
-        </h1>
-      </div>
+    // <header
+    //   className={`fixed top-0 right-0 h-12 flex items-center justify-between px-6 shadow-sm bg-white z-50 transition-all
+    //   ${open ? "md:left-64 left-12" : "left-12"}`}
+    // >
+    //   <div>
+    //     <h1 className={`text-xl font-bold   ${open ? "md:hidden" : ""}  `}>
+    //        <span className="text-2xl pl-1 font-semibold">PromptPro</span>
+    //     </h1>
+    //   </div>
 
-      {/* <div className="flex items-center gap-2">
-            <p className="cursor-pointer">Se connecter</p>
-            <div className="flex items-center gap-4">
-              <Share className="text-sm" />
+    //   {/* <div className="flex items-center gap-2">
+    //         <p className="cursor-pointer">Se connecter</p>
+    //         <div className="flex items-center gap-4">
+    //           <Share className="text-sm" />
              
-           </div>
-      </div>
-     */}
+    //        </div>
+    //   </div>
+    //  */}
 
-     <div>
-        <p>Filter </p>
-     </div>
+    //  <div>
+    //     <p>Filter </p>
+    //  </div>
     
     
     
-    </header>
+    // </header>
+
+      <header className="bg-white border-b border-gray-200 fixed top-0 left-2 right-0 z-50">
+          
+            <div className="px-4 sm:px-6 py-4">
+             
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                    
+                    
+                    
+                    {/* <button  className="p-2 text-gray-600 hover:text-gray-900 transition-colors  border-4 border-red-600       "
+                      onClick={() => setOpen(!open)}> {open ? <><PanelLeftClose  /></> : <><PanelLeftOpen  /></> }  
+                    </button> */}
+                 
+                 
+                      <><SidebarTrigger className="text-6xl   " /></>
+                 
+                 
+                  {/* <button className="lg:hidden p-2 text-gray-600 hover:text-gray-900">
+                    <FaBars size={18} />
+                  </button> */}
+                  <h1 className="text-xl sm:text-2xl font-bold text-gray-900">PromptPro</h1>
+                </div>
+
+
+                
+                
+                <div className="flex items-center gap-4">
+                  <button className="p-2 text-gray-600 hover:text-gray-900 transition-colors">
+                    <FaBell size={18} />
+                  </button>
+                  {/* <button className="p-2 text-gray-600 hover:text-gray-900 transition-colors">
+                    <FaCog size={18} />
+                  </button> */}
+                
+                
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                    <FaUser   onClick={() => setShowAccountMenu(!showAccountMenu)}
+                     className="text-white text-sm cursor-pointer" />
+                     
+                     
+                     
+                      <div className={` ${showAccountMenu ? "bloc" : "hidden"}  absolute z-50 bg-white  w-44 h-60 border-2  rounded-md top-16  right-0    `}>
+                          <div className="flex flex-col  items-center p-4  w-full">
+                            
+                            <div className="flex flex-col  items-center mb-4">
+                              <img  src={user.imageUrl} alt={user.fullName || "Profile"} className="object-cover w-10 h-10 rounded-full" />
+                              <span className="mt-2 font-md">{user.firstName}</span>
+                            </div>
+
+                            <div>
+                              <p>LogOut</p>
+                            </div>
+
+
+                         </div>
+
+
+                    </div>
+                     
+                      
+
+                 
+                
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+      </header>
+
+      
     
   )
 }
@@ -47,10 +126,21 @@ const Nav2 = () => {
 export default Nav2
 
 
-// <header className="flex  fixed w-[1000px] bg-white z-50 justify-between  border-2   shadow-sm  md:px-10 px-4 py-4 border-red-500  mr-10   ">
+ {/* <div className="w-8 h-8 rounded-full flex items-center justify-center">
+                    
+                    <User className=" text-sm" />
+               
+                  </div> */}
 
-    //     {/* <div className="flex items-center justify-between w-full md:mr-28 sm:mr-28   border-4 border-red-600 "> */}
-    //           <div>
+                    {/* <div className="p-3 flex items-center gap-3 rounded-full  ">
+                    <img  src={user.imageUrl} alt={user.fullName || "Profile"}
+                      className=" object-cover     w-[36px] h-[30px] cursor-pointer rounded-full  "
+                       />
+                      <span className="ml-2">{user.firstName}</span>
+                    </div> */}
+
+
+    {/* //           <div>
     //                 <h1 className="font-semibold text-md " >PromptPro</h1>
     //           </div>
           
@@ -59,7 +149,7 @@ export default Nav2
                  
     //               <div className="md:flex hidden items-center gap-2 ">
     //                 <Share className="text-sm"/> <span>Partager</span>
-    //               </div>
+    //               </div> */}
 
       
 

@@ -10,6 +10,10 @@ import {SidebarMenuButton} from "@/components/ui/sidebar"
 import { SignOutButton } from "@clerk/nextjs"
 import DisplayPopup from "@/components/DisplayPopup"
 import { PopupProvider } from "@/context/PopupContext"
+import FooterMobile from "@/components/FooterMobile"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
+import Nav2 from "@/components/Nav2"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 
@@ -21,16 +25,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
          <PopupProvider>
-            <div className={`h-screen w-12 pl-2 flex flex-col border-2 md:mr-4 mr-0 ` }>
-              <SidebarTrigger className="text-3xl  md:mt-5 mt-4 fixed  " />
-              <SidebarLeft />
+            <div className={`h-screen w-12 pl-2 flex flex-col border-2 md:mr-4 mr-0  ` }>
+              <SidebarTrigger className="text-3xl  md:mt-5 mt-4 fixed    " />
+              {/* <SidebarLeft /> */}
             </div>
-        <AppSidebar />
-          <main className="w-full flex flex-col  mr-4 ">
-              <DisplayPopup />             
+          <AppSidebar />
+          <main className="w-full flex flex-col  mr-4   ">
+              <DisplayPopup />
+                        
             {children}
-          
+
+       
+         <FooterMobile />
           </main>
+
+
+          
+
+
 
         </PopupProvider>
     </SidebarProvider>

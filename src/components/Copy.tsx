@@ -1,6 +1,6 @@
 "use client"
 import { useState, useRef, useEffect, startTransition } from 'react';
-import { Copy, Star } from "lucide-react";
+import { Copy, HeartCrack, Star } from "lucide-react";
 import { toggleFavori } from '@/app/lib/actions/markeFavori';
 
 type LargeExpandableCodeBoxProps = {
@@ -65,7 +65,7 @@ const LargeExpandableText = ({
 
         <div className="flex items-center gap-3">
           {/* ⭐ Favori */}
-          <button
+          {/* <button
             onClick={() => handleFavori(id)}
             className="cursor-pointer transition-transform hover:scale-110"
             title="Ajouter au Favori"
@@ -75,6 +75,21 @@ const LargeExpandableText = ({
               className={`transition-all duration-300 ${
                 favoriState
                   ? 'fill-yellow-400 text-yellow-400 drop-shadow-md animate-pulse'
+                  : 'fill-none text-gray-400 hover:text-yellow-400'
+              }`}
+            />
+          </button> */}
+
+           <button
+            onClick={() => handleFavori(id)}
+            className="cursor-pointer transition-transform hover:scale-110"
+            title="Ajouter au Favori"
+          >
+            <HeartCrack
+              size={20}
+              className={`transition-all duration-300 ${
+                favoriState
+                  ? 'fill-red-600 text-red-600 drop-shadow-md '
                   : 'fill-none text-gray-400 hover:text-yellow-400'
               }`}
             />
@@ -129,13 +144,15 @@ const LargeExpandableText = ({
           expanded ? '' : 'max-h-[220px] sm:max-h-[300px]'
         } transition-all duration-300`}
       >
-        <pre
+        <pre 
           className={`whitespace-pre-wrap ${
             language === 'json'
               ? 'text-gray-700'
               : 'text-gray-800'
           } font-['JetBrains_Mono',monospace]`}
         >
+
+            {/* prompt is content that i don't want render the html tag */}
           {prompt}
         </pre>
 
