@@ -6,6 +6,13 @@ const PromptSchema = new Schema(
     description: { type: String, required: true },
     category: { type: String, required: true },
     content: { type: String, required: true },
+    socialMedia: { type: String, required: false },
+    // content: {
+
+    //   type: Object,
+    //   required: true
+    // },
+
     isFavori: { type: Boolean, default: false },
   },
   { timestamps: true }

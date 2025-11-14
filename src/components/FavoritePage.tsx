@@ -71,6 +71,7 @@ const LargeExpandableText = ({
 
         <div className="flex items-center gap-3">
           {/* ⭐ Favori */}
+        
           <button
             onClick={() => handleFavori(id)}
             className="cursor-pointer"
@@ -132,17 +133,8 @@ const LargeExpandableText = ({
       </div>
 
       {/* Corps du texte */}
-      <div
-        ref={contentRef}
-        className={`relative p-4 font-mono text-sm overflow-y-hidden ${
-          expanded ? '' : 'max-h-[300px]'
-        }`}
-      >
-        <pre
-          className={`whitespace-pre-wrap text-md ${
-            language === 'json' ? 'text-gray-600' : 'text-gray-800'
-          }`}
-        >
+      <div ref={contentRef} className={`relative p-4 font-mono text-sm overflow-y-hidden ${   expanded ? '' : 'max-h-[300px]'}`}>
+        <pre className={`whitespace-pre-wrap text-md ${ language === 'json' ? 'text-gray-600' : 'text-gray-800'}`} >
           {prompt}
         </pre>
 

@@ -38,9 +38,24 @@ export const getPrompts = async (category: string) => {
     const prompts = await PromptModel.find(filter).lean(); // ✅ transforme en plain object
     return JSON.parse(JSON.stringify(prompts)); // ✅ s’assure que c’est sérialisable
   } catch (error) {
-    throw new Error("Erreur lors de la récupération des prompts");
+    console.error("Erreur getPrompts:", error);
+    throw new Error("Erreur lors de la récupération des prompts", { cause: error });
   }
 };
+
+export const getPromptsSocial = async (socialMedia: string) => {
+  try {
+    await connectDB();
+
+    const filter = socialMedia === "all" ? {} : { socialMedia };
+    const promptsSocialMedia = await PromptModel.find(filter).lean(); // ✅ transforme en plain object
+    return JSON.parse(JSON.stringify(promptsSocialMedia)); // ✅ s’assure que c’est sérialisable
+  } catch (error) {
+    console.error("Erreur getPrompts:", error);
+    throw new Error("Erreur lors de la récupération des prompts", { cause: error });
+  }
+};
+
 
 // export const getPrompts = async (category: string) => {
 

@@ -36,7 +36,11 @@ export default function Contact() {
   }
 
   return (
-    <main className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-5">
+    <main className="flex  flex-col justify-center items-center min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-5">
+        <div className="mb-4 font-semibold text-gray-800">
+          <p>Critiques , suggestions, et commentaires  sont les bienvenus 😂. </p>
+        </div>
+      
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-lg transition-all"

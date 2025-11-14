@@ -2,47 +2,25 @@
 import { useState, useRef, useEffect, startTransition } from 'react';
 import { Copy, HeartCrack, Star } from "lucide-react";
 import { toggleFavori } from '@/app/lib/actions/markeFavori';
-import StyledText from './StyleText';
-import { RiFileCopyLine } from 'react-icons/ri';
+import RichTextViewer from './RichTextViewer';
 
-type LargeExpandableCodeBoxProps = {
+type Copy2Props = {
   prompt?: any;
   title?: string;
   id?: string;
-  category?: string;
-  // socialMedia?: string;
   language?: string;
   initialExpanded?: boolean;
   isFavori?: boolean;
 };
 
-function HighlightedText({ text, highlight }: { text: string; highlight: string }) {
-  // Split le texte par le mot à mettre en couleur
-  const parts = text.split(new RegExp(`(${highlight})`, "gi"));
-
-  return (
-    <pre className="whitespace-pre-wrap text-gray-800 font-['JetBrains_Mono',monospace]">
-      {parts.map((part, i) =>
-        part.toLowerCase() === highlight.toLowerCase() ? (
-          <span key={i} className="text-red-500 font-bold">{part}</span>
-        ) : (
-          part
-        )
-      )}
-    </pre>
-  );
-}
-
-
-const LargeExpandableText = ({
+const Copy2 = ({
   prompt,
   title,
-  category , 
   id,
   language,
   initialExpanded,
   isFavori = false,
-}: LargeExpandableCodeBoxProps) => {
+}: Copy2Props) => {
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(initialExpanded);
   const [showExpand, setShowExpand] = useState(false);
@@ -51,7 +29,10 @@ const LargeExpandableText = ({
 
   const copyToClipboard = () => {
     if (!prompt) return;
-    navigator.clipboard.writeText(prompt);
+    // navigator.clipboard.writeText(prompt);
+    navigator.clipboard.writeText(
+  contentRef.current?.innerText || ""
+);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -83,25 +64,10 @@ const LargeExpandableText = ({
       {/* Header */}
       <div className="flex justify-between items-center bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-3 border-b border-gray-200">
         <span className="text-base sm:text-sm font-semibold text-gray-800 truncate tracking-wide">
-          {category}
+          {title}
         </span>
 
         <div className="flex items-center gap-3">
-          {/* ⭐ Favori */}
-          {/* <button
-            onClick={() => handleFavori(id)}
-            className="cursor-pointer transition-transform hover:scale-110"
-            title="Ajouter au Favori"
-          >
-            <Star
-              size={20}
-              className={`transition-all duration-300 ${
-                favoriState
-                  ? 'fill-yellow-400 text-yellow-400 drop-shadow-md animate-pulse'
-                  : 'fill-none text-gray-400 hover:text-yellow-400'
-              }`}
-            />
-          </button> */}
 
            <button
             onClick={() => handleFavori(id)}
@@ -134,29 +100,12 @@ const LargeExpandableText = ({
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-
-                {/* <RiCheckLine size={18} className="text-green-500" /> */}
-
                 <span className="hidden xs:inline font-medium">Copié!</span>
               </>
             ) : (
               <>
-                {/* <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-                  />
-                </svg> */}
-
-                {/* < Copy className='cursor-pointer' size={18} /> */}
-                 <RiFileCopyLine size={20} className="cursor-pointer" />
+             
+                < Copy className='cursor-pointer' size={18} />
                 <span className="hidden xs:inline font-medium">Copier</span>
               </>
             )}
@@ -165,11 +114,30 @@ const LargeExpandableText = ({
       </div>
 
       {/* Contenu principal */}
-      <div
+
+               {/* <div
         ref={contentRef}
-        className={`relative p-4 sm:p-5 text-sm sm:text-base leading-relaxed text-gray-700 overflow-y-hidden bg-gray-50/60 backdrop-blur-sm ${
-          expanded ? '' : 'max-h-[220px] sm:max-h-[300px]'
-        } transition-all duration-300`}
+        className={`relative p-4 sm:p-5 text-sm sm:text-base leading-relaxed text-gray-700 overflow-y-hidden bg-gray-50/60 backdrop-blur-sm 
+         
+           ${expanded ? '' : 'max-h-[220px] sm:max-h-[300px]'}
+          
+          transition-all duration-300`}
+      ></div> */}
+
+
+      <div ref={contentRef}
+        className={`relative p-4 sm:p-5 text-sm sm:text-base leading-relaxed text-gray-700 overflow-y-hidden bg-gray-50/60 backdrop-blur-smtransition-all duration-300
+        `}>
+       
+        {/* <pre
+          className={`whitespace-pre-wrap ${
+            language === 'json'
+              ? 'text-gray-700'
+              : 'text-gray-800'
+         
+           ${expanded ? '' : 'max-h-[220px] sm:max-h-[300px]'}
+          
+          transition-all duration-300`}
       >
         {/* <pre 
           className={`whitespace-pre-wrap ${
@@ -183,17 +151,7 @@ const LargeExpandableText = ({
           {prompt}
         </pre> */}
 
-        {/* <HighlightedText text={prompt} highlight="Objet" /> */}
-
-
-        <StyledText
-                         text={prompt}
-        highlights={[
-          { word: "Objet", style: { color: "text-blue-500", bold: true, underline: true, align: "center"  } },
-          // { word: "Monsieur", style: { color: "text-blue-500", bold: true ,  align: "right"} },
-        ]}
-/>
-
+        <RichTextViewer content={prompt} />
 
         {!expanded && showExpand && (
           <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-gray-100 via-gray-50 to-transparent pointer-events-none"></div>
@@ -229,4 +187,4 @@ const LargeExpandableText = ({
   );
 };
 
-export default LargeExpandableText;
+export default Copy2;

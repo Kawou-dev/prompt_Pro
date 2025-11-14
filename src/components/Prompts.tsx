@@ -1,6 +1,6 @@
 import { FaArrowLeft, FaArrowRight, FaRegClock, FaChartLine, FaRegStar, FaCog, FaBell, FaUser, FaSearch, FaFilter, FaCopy, FaHeart, FaRegHeart, FaInstagram, FaLinkedin, FaTwitter, FaBars, FaFacebook, FaWhatsapp } from "react-icons/fa"
 import Link from "next/link"
-import { getPrompts } from "@/app/lib/actions/getPrompts"
+import { getPrompts, getPromptsSocial } from "@/app/lib/actions/getPrompts"
 import { elements } from "@/app/lib/data/data"
 import LargeExpandableText from "./Copy"
 import FooterMobile from "./FooterMobile"
@@ -17,10 +17,29 @@ const socialPlatforms = [
 
 
 
-const Prompts = async({ searchParams }: { searchParams: { category?: string }}) => {
+const Prompts = async({ searchParams }: { searchParams: { category?: string , social?: string }}) => {
 
-  const category = searchParams?.category || "all"
-  const prompts = await getPrompts(category)
+  // const category = searchParams?.category || "all"
+  // const prompts = await getPrompts(category)
+
+
+  // const social = searchParams?.social || "all"
+  // const socials = await getPromptsSocial(social)
+
+  const category = searchParams?.category || "all";
+  const social = searchParams?.social;
+
+  let prompts = [];
+
+  // Priorité : si l'utilisateur filtre par social, on affiche social
+  if (social) {
+    prompts = await getPromptsSocial(social);
+  } else if (category) {
+    prompts = await getPrompts(category);
+  } else {
+    prompts = await getPrompts("all");
+  }
+
 
   // Stats simulées pour le dashboard
   const userStats = {
@@ -49,7 +68,52 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string }}) 
         {/* SECTION PRINCIPALE AVEC MARGIN POUR LA SIDEBAR */}
         <section className="flex-1 min-h-screen p-4 sm:p-6 lg:pr-72     "> {/* Marge pour la sidebar */}
           
-          {/* BARRE DE RECHERCHE PRINCIPALE RESPONSIVE */}
+        {/* *********************************************************** */}
+
+          {/* CONTENU PRINCIPAL DES PROMPTS */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
+                📝 Les meilleurs templates -  
+                <span className="text-blue-600"> PromptPro</span>
+              </h2>
+              <div className="flex items-center gap-4">
+                <span className="text-sm text-gray-600">{prompts.length} templates trouvés</span>
+              </div>
+            </div>
+
+            {/* Liste des prompts */}
+            <div className="space-y-4 sm:space-y-6  "   >
+
+              {prompts.length === 0 && (
+                <p className="text-center text-gray-500 py-10">Aucun template trouvé pour cette catégorie.</p>
+              )}
+
+
+              {prompts.map((prompt: any, index: number) => (
+                <div 
+                  key={index} 
+                  id={prompt.category} 
+                  className="border border-gray-200 rounded-lg p-4 sm:p-6 hover:border-blue-200 transition-colors bg-white"
+                >
+                  {/* En-tête du template */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <h1 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{prompt.title}</h1>
+                      <p className="text-gray-600 text-sm sm:text-base">{prompt.description}</p>
+                    </div>
+                
+                    {/* <button className="p-2 text-gray-400 hover:text-red-500 transition-colors ml-2 sm:ml-4 flex-shrink-0">
+                      {prompt.isFavori ? (
+                        <FaHeart className="text-red-500" size={18} />
+                      ) : (
+                        <FaRegHeart size={18} />
+                      )}
+                    </button>
+                 */}
+
+
+                        {/* BARRE DE RECHERCHE PRINCIPALE RESPONSIVE */}
           {/* <div className="mb-6 sm:mb-8">
            
             <div className="relative max-w-2xl">
@@ -75,41 +139,12 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string }}) 
 
          
 
-          {/* CONTENU PRINCIPAL DES PROMPTS */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
-              <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
-                📝 Les meilleurs templates -  
-                <span className="text-blue-600"> PromptPro</span>
-              </h2>
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-600">{prompts.length} templates trouvés</span>
-              </div>
-            </div>
 
-            {/* Liste des prompts */}
-            <div className="space-y-4 sm:space-y-6  "   >
-              {prompts.map((prompt: any, index: number) => (
-                <div 
-                  key={index} 
-                  id={prompt.category} 
-                  className="border border-gray-200 rounded-lg p-4 sm:p-6 hover:border-blue-200 transition-colors bg-white"
-                >
-                  {/* En-tête du template */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h1 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{prompt.title}</h1>
-                      <p className="text-gray-600 text-sm sm:text-base">{prompt.description}</p>
-                    </div>
-                
-                    {/* <button className="p-2 text-gray-400 hover:text-red-500 transition-colors ml-2 sm:ml-4 flex-shrink-0">
-                      {prompt.isFavori ? (
-                        <FaHeart className="text-red-500" size={18} />
-                      ) : (
-                        <FaRegHeart size={18} />
-                      )}
-                    </button>
-                 */}
+
+
+
+
+
                 
                   </div>
 
@@ -118,6 +153,7 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string }}) 
                     <LargeExpandableText 
                       prompt={prompt.content}
                       title={prompt.title}
+                      category={prompt.category}
                       id={prompt._id.toString()}
                       isFavori={prompt.isFavori}
                       language="json"
@@ -200,11 +236,19 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string }}) 
                     {/* **********  working here ********* */}
 
 
-                    <Link   href={`/prompts?category=${plateform.href}`} 
+                    {/* <Link   href={`/prompts?category=${plateform.href}`} 
+                      className="flex items-center gap-2">
+                        <span className="text-blue-500">{plateform.icon}</span>
+                       {plateform.name}
+                    </Link> */}
+
+                    <Link   href={`/prompts?social=${plateform.href}`} 
                       className="flex items-center gap-2">
                         <span className="text-blue-500">{plateform.icon}</span>
                        {plateform.name}
                     </Link>
+                 
+                 
                   </button>
                 ))}
              
@@ -222,7 +266,7 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string }}) 
                     key={elm.category}
                     href={`/prompts?category=${elm.href}`}
                     className={`block px-3 py-2 rounded-lg transition-colors ${
-                      elm.category === category
+                      elm.category === category || elm.href === ''
                         ? 'bg-blue-50 text-blue-600 border border-blue-200 font-medium'
                         : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
                     }`}

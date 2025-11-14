@@ -1,27 +1,28 @@
 import { usePopup } from '@/context/PopupContext'
 import React from 'react'
 import {SquareX , X , Search}  from "lucide-react"
+import Link from 'next/link'
 
 
 
 const themes = [
   {
-    label : "Actualités" , value: "actualites"
+    label : "Actualités" , value: "actualités"
   }, 
-    {
+  {
     label : "Annonce" , value: "annonce"
   }, 
-    {
-    label : "Invitation" , value: "invitation"
+  {
+    label : "Facebook" , value: "facebook"
   }, 
    {
-    label : "Developpement personnel" , value: "developpement_personnel"
+    label : "LinkedIn" , value: "linkedin"
   }, 
   {
     label : "Humour" , value: "humour"
   }, 
   {
-    label : "Campus France" , value: "campus_france"
+    label : "Campus France" , value: "Campus"
   }, 
 
 
@@ -71,7 +72,9 @@ const Popup = () => {
 
                                       {themes.map( (item) => (
                                         <div key={item.value} className='w-full border-2 py-2 px-2 rounded   ' >
-                                           <p>{item.label}</p>
+                                            <a href={`/prompts?category=${item.value}`}>
+                                            <p>{item.label}</p>
+                                            </a> 
                                         </div>
                                      
                                      ) )}

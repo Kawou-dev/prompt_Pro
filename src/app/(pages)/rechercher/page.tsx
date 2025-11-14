@@ -34,7 +34,7 @@ const SearchPage = () => {
         <div className="relative shadow-sm">
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Rechercher..."
             value={query}
             onChange={handleSearch}
             className="pl-4 p-2  border-4 border-t-blue-600   border-x-0 border-b-2 w-full text-black text-xl"
