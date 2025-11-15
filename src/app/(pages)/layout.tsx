@@ -1,5 +1,4 @@
-"use client"
-
+"us client"
 import {Home, MessageCirclePlus, MessageCircleReply, Search}  from "lucide-react"
 import { SidebarHeader, SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
@@ -16,33 +15,25 @@ import Footer from "@/components/Footer"
 import Nav2 from "@/components/Nav2"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-
-
-  
-
-     
+ 
 
   return (
     <SidebarProvider>
          <PopupProvider>
-            <div className={`h-screen w-12 pl-2 flex flex-col border-2 md:mr-4 mr-0  ` }>
+           {/* <div className={`h-screen w-12 pl-2 flex flex-col border-2 md:mr-4 mr-0  ` }></div> */}
+            <div className={`h-screen w-12 pl-2 flex flex-col border-2  ` }>
               <SidebarTrigger className="text-3xl  md:mt-5 mt-4 fixed    " />
               {/* <SidebarLeft /> */}
             </div>
           <AppSidebar />
-          <main className="w-full flex flex-col  mr-4   ">
+          <main className="w-full flex flex-col  mr-4    ">
               <DisplayPopup />
-                        
+
+              <Nav2 />
             {children}
 
-       
          <FooterMobile />
           </main>
-
-
-          
-
-
 
         </PopupProvider>
     </SidebarProvider>

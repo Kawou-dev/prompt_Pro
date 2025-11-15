@@ -23,7 +23,7 @@ const adds = [
 
 const Hero = () => {
   return (
-    <section className="relative bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-16 md:py-20 lg:py-28">
+    <section className="relative bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-20 md:py-20 lg:py-28">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           {/* Content */}
@@ -39,14 +39,14 @@ const Hero = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
               <Link 
-                href="/explore" 
-                className="px-8 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
+                href="/prompts" 
+                className="px-8 py-3   border-2 dark:border-white  text-lg    font-medium   rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
               >
                 Explorer les prompts
               </Link>
               <Link 
-                href="/create" 
-                className="px-8 py-3 border-2 border-purple-500 text-purple-500 dark:text-purple-400 dark:border-purple-400 font-medium rounded-lg hover:bg-purple-50 dark:hover:bg-gray-800 transition-all duration-300 text-center"
+                href="/favorites" 
+                className="px-8 py-3 border-2 dark:bg-white dark:text-black    text-lg   font-medium rounded-lg hover:bg-purple-50 dark:hover:bg-gray-800 transition-all duration-300 text-center"
               >
                 Partager un prompt
               </Link>
@@ -54,17 +54,17 @@ const Hero = () => {
             
             <div className="flex items-center justify-center lg:justify-start gap-6 text-gray-500 dark:text-gray-400">
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">5K+</div>
+                <div className="text-2xl font-bold text-purple-600 dark:text-white">5K+</div>
                 <div className="text-sm">Prompts disponibles</div>
               </div>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">2K+</div>
+                <div className="text-2xl font-bold text-purple-600 dark:text-white">2K+</div>
                 <div className="text-sm">Utilisateurs actifs</div>
               </div>
               <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">98%</div>
+                <div className="text-2xl font-bold text-purple-600 dark:text-white">98%</div>
                 <div className="text-sm">Satisfaction</div>
               </div>
             </div>

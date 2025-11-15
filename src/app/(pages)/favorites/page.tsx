@@ -10,7 +10,7 @@ export default async function FavoritesPage()  {
 
     <div>
 
-        <Nav2 />
+        {/* <Nav2 /> */}
 
     <div className="mt-20 flex flex-col gap-2 border-2  mx-auto p-4  mb-8 ">
       

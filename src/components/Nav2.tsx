@@ -15,7 +15,7 @@ const Nav2 = () => {
   if (!user) return null;
 
   return (
-    <header className="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 shadow-sm">
+    <header className="bg-white border-b border-gray-200 fixed h-16 top-0 left-0 right-0 z-50 shadow-sm">
       <div className="px-4 sm:px-6 py-3">
         <div className="flex items-center justify-between">
           
@@ -69,7 +69,7 @@ const Nav2 = () => {
                       font-semibold text-sm hover:bg-red-100 transition
                     "
                   >
-                    Logout
+                    Se deconnecer 
                   </button>
                 </div>
               </div>

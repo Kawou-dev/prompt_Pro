@@ -1,3 +1,4 @@
+"use client"
 type StyleOptions = {
   color?: string;        // exemple: "text-red-500"
   bold?: boolean;
@@ -49,6 +50,7 @@ function StyledText({
     elements = newElements;
   });
 
-  return <pre className="whitespace-pre-wrap font-['JetBrains_Mono',monospace]     ">{elements}</pre>;
+  return <pre suppressHydrationWarning
+   className="whitespace-pre-wrap font-['JetBrains_Mono',monospace] ">{elements}</pre>;
 }
 export default StyledText;

@@ -40,7 +40,7 @@ const Navbar = () => {
   }
 
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+    <header className={`fixed h-14 w-full top-0 z-50 transition-all duration-300    ${
       isScrolled 
         ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-lg border-b border-gray-200/20' 
         : 'bg-white dark:bg-black shadow-sm'
@@ -49,11 +49,18 @@ const Navbar = () => {
         
         {/* Logo */}
         <div className="flex items-center">
-          <Link href="/" className="flex items-center">
+          {/* <Link href="/" className="flex items-center">
             <span className="self-center text-2xl md:text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 transition-all duration-300">
               PromptPro
             </span>
+          </Link> */}
+
+           <Link href="/" className="flex items-center">
+            <span className="self-center text-2xl md:text-3xl font-bold tracking-tight  transition-all duration-300">
+              PromptPro
+            </span>
           </Link>
+
         </div>
 
         {/* Navigation desktop */}
@@ -63,10 +70,10 @@ const Navbar = () => {
               <li key={link.label}>
                 <Link 
                   href={link.href}
-                  className="relative px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="relative px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-400 transition-colors duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
                   {link.label}
-                  <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transform scale-x-0 transition-transform duration-200 origin-center hover:scale-x-100"></span>
+                  <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-gradient-to-r  transform scale-x-0 transition-transform duration-200 origin-center hover:scale-x-100"></span>
                 </Link>
               </li>
             ))}
@@ -112,9 +119,10 @@ const Navbar = () => {
       </div>
 
       {/* Menu mobile déroulant */}
-      <div className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-black shadow-xl border-t border-gray-200 dark:border-gray-800 transition-all duration-300 ease-in-out ${
+      <div className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-black shadow-xl dark:border-b-white  border-t border-gray-200 dark:border-gray-800 transition-all duration-300 ease-in-out ${
         isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
       }`}>
+        
         <nav className="px-4 py-4">
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
@@ -122,7 +130,7 @@ const Navbar = () => {
                 <Link 
                   href={link.href} 
                   onClick={closeMenu}
-                  className="flex px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 border-l-2 border-transparent hover:border-purple-500"
+                  className="flex px-4 py-3 text-xl  font-normal text-black dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 border-l-2 border-transparent hover:border-purple-500"
                 >
                   {link.label}
                 </Link>
@@ -130,14 +138,21 @@ const Navbar = () => {
             ))}
           </ul>
           
-          <div className='flex flex-col gap-2 mt-4 pt-4 border-t border-gray-200 dark:border-gray-800'>
-            <button className='w-full px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 text-center'>
+          <div className='flex flex-col gap-2 mt-2 pt-4 border-t border-gray-200 dark:border-gray-800'>
+           
+            <button className='w-full px-4 py-3 text-base font-medium text-gray-700 border-black dark:border-white border-1  dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 text-center'>
               <Link href={"/sign-in"} onClick={closeMenu}>Se connecter</Link>
             </button>
-            <button className='w-full px-4 py-3 text-base font-medium text-white bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-200 shadow-md text-center'>
+            
+            <button className='w-full px-4 py-3 text-md font-medium dark:text-black text-white bg-black dark:bg-white transition-all duration-200 shadow-md text-center  rounded-lg '>
               <Link href={"/sign-up"} onClick={closeMenu}>S&apos;inscrire</Link>
             </button>
+          
           </div>
+
+
+
+
         </nav>
       </div>
     </header>

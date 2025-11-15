@@ -29,12 +29,14 @@ const PromptAdmin = () => {
     console.log("RESPONSE FROM SERVER ===> " , data) ;
     if(res.ok) {
       alert("Prompt added successfully") ; 
-      // setFormData({
-      //   title : "" , 
-      //   description : "", 
-      //   category : "" ,  
-      //   content : ""
-      // })
+
+      setFormData({
+        title : "" , 
+        description : "",
+        category : "" ,  
+        content : "" , 
+        socialMedia : ""
+      })
     } else {
       alert("Error adding prompt") ; 
     }   

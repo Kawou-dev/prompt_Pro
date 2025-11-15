@@ -11,7 +11,7 @@ const Prompt = async({ searchParams,}: {searchParams: Promise<{ category?: strin
 
   return (
     <div className="">
-      <Nav2 />
+      {/* <Nav2 /> */}
       <Prompts searchParams={{ category, social }} />
       {/* <Prompts2 searchParams={{ category }} /> */}
     </div>

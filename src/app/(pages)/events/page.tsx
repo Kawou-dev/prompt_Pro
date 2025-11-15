@@ -35,7 +35,7 @@ export default function Events() {
 
   return (
     <>
-      <Nav2 />
+      {/* <Nav2 /> */}
       <main className="flex flex-col items-center mt-20 gap-6">
         <section>
           <Calendar

@@ -3,31 +3,31 @@ import { Calendar, ChevronUp, Home, Inbox, Pencil, Search, Settings, User, User2
 
 export const items = [
   {
-    title: "Home",
+    title: "Accueil",
     url: "prompts",
     icon: Home,
   },
 
     {
-    title: "Favoris",
-    url: "/favories",
+    title: "Vos favoris",
+    url: "/favorites",
     icon: HeartPlus,
   },
    {
-    title: "Chat",
+    title: "Chatbot",
     url: "chat",
     icon: SquarePen,
  
   },
  
   {
-    title: "Search",
-    url: "/rechercher",
+    title: "Recherche",
+    url: "/search",
     icon: Search,
   },
 
    {
-    title: "Calendar",
+    title: "Calendrier",
     url: "/events",
     icon: Calendar,
   },

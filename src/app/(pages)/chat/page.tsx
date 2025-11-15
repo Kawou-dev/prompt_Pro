@@ -32,7 +32,8 @@ const Chat = () => {
                 <div className="flex flex-col gap-4 items-center ">
                       <h1 className="flex gap-2 items-center text-center text-2xl font-semibold">
                         <p>Personnalisez votre texte ici ! </p> 
-                         <span> <HandHelping /> </span> </h1>
+                         {/* <span> <HandHelping /> </span> */}
+                          </h1> 
                     
                     <form >
 
