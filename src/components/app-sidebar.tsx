@@ -44,7 +44,7 @@ export function AppSidebar() {
           <SidebarGroupLabel>
                <div className="flex flex-col w-full gap-4">
                     <div className="flex items-center justify-between  w-full mt-5 ">
-                      <span className="text-2xl pl-1 font-semibold">PromptPro</span>
+                      <span className="text-2xl pl-1 font-semibold">Eloque_Pro</span>
                       <SidebarTrigger className="text-6xl  " />
                    </div>
 

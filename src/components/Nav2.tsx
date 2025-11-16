@@ -24,7 +24,7 @@ const Nav2 = () => {
             <SidebarTrigger className="text-gray-700 hover:text-gray-900 transition" />
 
             <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-              PromptPro
+              Eloque_Pro
             </h1>
           </div>
 

@@ -27,14 +27,20 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           {/* Content */}
+          
+
           <div className="flex-1 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Découvrez le pouvoir des 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500"> prompts intelligents</span>
+         
+                Boostez vos publications avec des <br /> 
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500">textes puissants</span>
             </h1>
             
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Notre plateforme vous aide à créer, partager et découvrir des prompts efficaces pour maximiser votre productivité avec l'IA.
+              {/* Notre plateforme vous aide à créer, partager et découvrir des prompts efficaces pour maximiser votre productivité avec l'IA. */}
+               Notre plateforme met à votre disposition une large collection de textes professionnels, inspirants et optimisés pour tous les réseaux sociaux. Gagnez du temps, trouvez l’inspiration et publiez facilement du contenu de qualité.
+        {/* Accédez à une bibliothèque de contenus optimisés pour les réseaux sociaux. Trouvez l’inspiration, gagnez du temps et publiez facilement des textes percutants adaptés à votre audience. */}
+
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
@@ -42,14 +48,15 @@ const Hero = () => {
                 href="/prompts" 
                 className="px-8 py-3   border-2 dark:border-white  text-lg    font-medium   rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
               >
-                Explorer les prompts
+                Explorer les textes
               </Link>
               <Link 
                 href="/favorites" 
                 className="px-8 py-3 border-2 dark:bg-white dark:text-black    text-lg   font-medium rounded-lg hover:bg-purple-50 dark:hover:bg-gray-800 transition-all duration-300 text-center"
               >
-                Partager un prompt
+                Partager un texte
               </Link>
+           
             </div>
             
             <div className="flex items-center justify-center lg:justify-start gap-6 text-gray-500 dark:text-gray-400">

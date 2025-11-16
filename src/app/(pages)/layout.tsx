@@ -21,12 +21,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
          <PopupProvider>
            {/* <div className={`h-screen w-12 pl-2 flex flex-col border-2 md:mr-4 mr-0  ` }></div> */}
-            <div className={`h-screen w-12 pl-2 flex flex-col border-2  ` }>
+            
+             <SidebarTrigger className="text-3xl  md:mt-5 mt-4 fixed    " />
+
+            {/* <div className={`h-screen w-12 pl-2 flex flex-col border-2  ` }>
               <SidebarTrigger className="text-3xl  md:mt-5 mt-4 fixed    " />
-              {/* <SidebarLeft /> */}
-            </div>
+              <SidebarLeft /> 
+
+            </div> */}
+          
+          
           <AppSidebar />
-          <main className="w-full flex flex-col  mr-4    ">
+          <main className="w-full flex flex-col   mr-0.5  ">
               <DisplayPopup />
 
               <Nav2 />

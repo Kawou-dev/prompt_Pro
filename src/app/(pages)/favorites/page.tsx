@@ -1,6 +1,7 @@
 import { getFavorites } from '@/app/lib/actions/getFavorites';
 import LargeFavorites from '@/components/LargeFavorites';
 import Nav2 from '@/components/Nav2';
+import Link from 'next/link';
 
 export default async function FavoritesPage()  {
 
@@ -15,7 +16,11 @@ export default async function FavoritesPage()  {
     <div className="mt-20 flex flex-col gap-2 border-2  mx-auto p-4  mb-8 ">
       
       {prompts.length === 0 && (
-        <p className="text-center text-gray-500 py-10">Vous n'avez pas encore de favoris.</p>
+        <div>
+          <p className="text-center text-gray-500 py-10">Vous n'avez pas encore de favoris.</p>
+          <p className='text-center  text-gray-700  underline  '><Link href="/prompts">Ajouter des favoris</Link></p>
+          
+        </div>
       )}
 
 

@@ -57,7 +57,7 @@ const Navbar = () => {
 
            <Link href="/" className="flex items-center">
             <span className="self-center text-2xl md:text-3xl font-bold tracking-tight  transition-all duration-300">
-              PromptPro
+              Eloque_Pro
             </span>
           </Link>
 

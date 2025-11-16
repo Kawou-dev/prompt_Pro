@@ -4,6 +4,7 @@ import { Copy, HeartCrack, Star } from "lucide-react";
 import { toggleFavori } from '@/app/lib/actions/markeFavori';
 import StyledText from './StyleText';
 import { RiFileCopyLine } from 'react-icons/ri';
+import HeartButton from '@/app/lib/actions/HeartButton';
 
 type LargeExpandableCodeBoxProps = {
   prompt?: any;
@@ -77,9 +78,10 @@ const LargeExpandableText = ({
       startTransition(() => setFavoriState((prev) => !prev));
     }
   };
+  
 
   return (
-    <div className="w-full bg-white border border-gray-200 shadow-md rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg font-['Inter']">
+    <div className="w-full bg-white border border-gray-200 shadow-md rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg font-['Inter']">
       {/* Header */}
       <div className="flex justify-between items-center bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-3 border-b border-gray-200">
         <span className="text-base sm:text-sm font-semibold text-gray-800 truncate tracking-wide">
@@ -88,7 +90,7 @@ const LargeExpandableText = ({
 
         <div className="flex items-center gap-3">
           {/* ⭐ Favori */}
-          {/* <button
+          <button
             onClick={() => handleFavori(id)}
             className="cursor-pointer transition-transform hover:scale-110"
             title="Ajouter au Favori"
@@ -101,7 +103,9 @@ const LargeExpandableText = ({
                   : 'fill-none text-gray-400 hover:text-yellow-400'
               }`}
             />
-          </button> */}
+          </button>
+
+          <HeartButton promptId={id!} />
 
            <button
             onClick={() => handleFavori(id)}

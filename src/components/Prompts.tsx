@@ -64,15 +64,20 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string , so
       
 
 
-      <div className="flex pt-16 w-full    ">
+      <div className="flex pt-16 w-full     ">
         {/* SECTION PRINCIPALE AVEC MARGIN POUR LA SIDEBAR */}
-        <section className="flex-1 min-h-screen p-4 sm:p-6 lg:pr-68     "> {/* Marge pour la sidebar */}
+        
+         {/* <section className="flex-1 min-h-screen p-4 sm:p-6 lg:pr-68     "></section> */}
+        
+        <section className="flex-1 min-h-screen p-2 sm:p-2 lg:pr-68 pr-0     "> {/* Marge pour la sidebar */}
           
         {/* *********************************************************** */}
 
+            {/* p-4 sm:p-6  */}
+
           {/* CONTENU PRINCIPAL DES PROMPTS */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-2 sm:p-4      ">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3 p-3 sm:p-4 ">
               <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
                 📝 Les meilleurs templates -  
                 <span className="text-blue-600"> PromptPro</span>
@@ -94,62 +99,19 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string , so
                 <div 
                   key={index} 
                   id={prompt.category} 
-                  className="border border-gray-200 rounded-lg p-4 sm:p-6 hover:border-blue-200 transition-colors bg-white"
+                  className="border border-gray-200 rounded-lg  hover:border-blue-200 transition-colors bg-white   "
                 >
                   {/* En-tête du template */}
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start justify-between mb-4 p-3 sm:p-4">
                     <div className="flex-1">
                       <h1 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{prompt.title}</h1>
                       <p className="text-gray-600 text-sm sm:text-base">{prompt.description}</p>
                     </div>
-                
-                    {/* <button className="p-2 text-gray-400 hover:text-red-500 transition-colors ml-2 sm:ml-4 flex-shrink-0">
-                      {prompt.isFavori ? (
-                        <FaHeart className="text-red-500" size={18} />
-                      ) : (
-                        <FaRegHeart size={18} />
-                      )}
-                    </button>
-                 */}
-
-
-                        {/* BARRE DE RECHERCHE PRINCIPALE RESPONSIVE */}
-          {/* <div className="mb-6 sm:mb-8">
            
-            <div className="relative max-w-2xl">
-              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <input 
-                type="text"
-                placeholder="Recherchez un template..."
-                className="w-full pl-10 pr-24 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
-              />
-              <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-3 py-1 rounded-md text-xs sm:text-sm flex items-center gap-1">
-                <FaFilter size={12} />
-                Filtres
-              </button>
-            </div>
-          </div> */}
-
-       
-          {/* <SearchInput /> */}
-
-
-           {/* STATISTIQUES RESPONSIVES */}
-           {/* Below */}
-
-         
-
-
-
-
-
-
-
-                
                   </div>
 
                   {/* Contenu du template */}
-                  <div className="mb-4 whitespace-pre-wrap     ">
+                  <div className="mb-4 whitespace-pre-wrap  p-0    ">
                     <LargeExpandableText 
                       prompt={prompt.content}
                       title={prompt.title}
@@ -177,16 +139,22 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string , so
                       <button className="px-3 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 transition-colors flex-1 sm:flex-none">
                         Aperçu
                       </button>
-                      <button className="px-3 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors flex items-center gap-2 flex-1 sm:flex-none">
+                      <button className="px-3  py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors flex justify-center items-center gap-2 flex-1 sm:flex-none">
                         <FaCopy size={12} />
                         Copier
                       </button>
                     </div>
                   </div>
+
                 </div>
-              ))}
+ 
+             ))}
+             
             </div>
 
+           
+           
+           
             {/* PAGINATION RESPONSIVE */}
             <div className="flex flex-col sm:flex-row items-center justify-between pt-6 mt-6 border-t border-gray-200 gap-4  pb-6 ">
               <button className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors border border-gray-300 rounded-lg hover:border-gray-400 w-full sm:w-auto justify-center">
@@ -300,6 +268,10 @@ const Prompts = async({ searchParams }: { searchParams: { category?: string , so
             </div>
           </div>
         </section>
+     
+     
+     
+     
       </div>
 
       <FooterMobile />

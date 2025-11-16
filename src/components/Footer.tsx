@@ -13,7 +13,7 @@ const Footer = () => {
             className="flex items-center justify-center space-x-2 rtl:space-x-reverse"
           >
             <span className="self-center   text-3xl font-bold tracking-tight text-black dark:text-white">
-              PromptPro
+              Eloque_Pro
             </span>
           </a>
 

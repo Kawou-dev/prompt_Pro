@@ -6,10 +6,10 @@ import { FaChartLine, FaFilter, FaSearch, FaUser } from 'react-icons/fa'
 
 
 const footerbuttons = [
-    { name: 'Recherche', icon: <FaSearch size={16} /> , href: "/rechercher" },
-    { name: 'Filtres', icon: <FaFilter size={16} /> , href: "/filtres" },
+    { name: 'Recherche', icon: <FaSearch size={16} /> , href: "/search" },
+    { name: 'Filtres', icon: <FaFilter size={16} /> , href: "/filters" },
     { name: 'Stats', icon: <FaChartLine size={16} /> , href: "/stats" },
-    { name: 'Profil', icon: <FaUser size={16} /> , href: "/profil" },
+    { name: 'Profil', icon: <FaUser size={16} /> , href: "/profile" },
 ]
 
 // 
@@ -27,7 +27,7 @@ const FooterMobile = () => {
           
           <button  
           className="flex flex-col items-center gap-1 text-gray-600 hover:text-blue-600">
-            <Link href={"/rechercher"}
+            <Link href={"/search"}
               className="flex flex-col items-center gap-1 text-gray-600 hover:text-blue-600" >
                 <FaSearch   size={16} />
                 <span className="text-xs">Recherche</span>
@@ -36,7 +36,7 @@ const FooterMobile = () => {
           <button onClick={openPopup}
           className="flex flex-col items-center gap-1 text-gray-600 hover:text-blue-600">
             <FaFilter size={16} />
-            <span className="text-xs">Filtres</span>
+            <span className="text-xs">Filtre</span>
           </button>
           <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-blue-600">
             <FaChartLine size={16} />
